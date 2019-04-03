@@ -1,8 +1,8 @@
-<a href="https://npmjs.com/package/vue-cli-plugin-vuex-module-generator">
-    <img alt="" src="https://img.shields.io/npm/v/vue-cli-plugin-vuex-module-generator/latest.svg?style=flat-square">
+<a href="https://www.npmjs.com/package/vue-cli-plugin-vue-component-generator">
+    <img alt="" src="https://img.shields.io/npm/v/vue-cli-plugin-vue-component-generator/latest.svg?style=flat-square">
 </a>
-<a href="https://npmjs.com/package/vue-cli-plugin-vuex-module-generator">
-    <img alt="" src="https://img.shields.io/npm/dm/vue-cli-plugin-vuex-module-generator.svg?style=flat-square">
+<a href="https://www.npmjs.com/package/vue-cli-plugin-vue-component-generator">
+    <img alt="" src="https://img.shields.io/npm/dm/vue-cli-plugin-vue-component-generator.svg?style=flat-square">
 </a>
 
 # Vue Component Generator
