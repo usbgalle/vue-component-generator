@@ -3,14 +3,17 @@ const path = require('path')
 
 
 module.exports = (api, options, rootOptions) => {
-  const { moduleName, storeRootDir } = options
-  const templatesRoot = './templates'
-  const moduleDirPath = path.join(storeRootDir, moduleName)
-  const storeRootPath = path.join(moduleDirPath, `${moduleName}.vue`)
+  var { moduleName, storeRootDir } = options;
+  moduleName = moduleName.toLowerCase();
+  const templatesRoot = './templates';
+  const moduleDirPath = path.join(storeRootDir, moduleName);
+  const storeRootPath = path.join(moduleDirPath, `${moduleName}.vue`);
+
+
 
   // Abort if module already exists
   if (fs.existsSync(storeRootPath)) {
-    console.warn(`Module ${moduleName} exists`)
+    console.warn(`Module ${moduleName} exists`);
     return
   }
 
@@ -23,40 +26,33 @@ module.exports = (api, options, rootOptions) => {
 
   const files = {}
 
-  // Store root
+  // Write templete files
   if (!fs.existsSync(storeRootPath)) {
-  
     ['vue', 'templete.html', 'scss'].forEach(template => {
       const fileName = `templete.${template}`
-      const new_fileName = moduleName + '.' + template;
+      const new_fileName = moduleName.toString() + '.' + template;
       const filePath = path.join(moduleDirPath, new_fileName)
       files[filePath] = `${templatesRoot}/vue/${fileName}`
     })
-
-
   }
-
   api.render(files);
 
+  // After creating files
   api.onCreateComplete(() => {
-
-    let rxLines = `\n<style lang="scss" src="./${moduleName}.scss"></style> \n <template src="./${moduleName}.templete.html"></template>`;
+    const importLines = `\n<style lang="scss" src="./${moduleName}.scss"></style> \n <template src="./${moduleName}.templete.html"></template>`;
     const mainPath = api.resolve(`${storeRootDir}/${moduleName}/${moduleName}.vue`);
 
-    // get content
+    // get content and inject import lines
     let contentMain = fs.readFileSync(mainPath, { encoding: 'utf-8' });
     const lines = contentMain.split(/\r?\n/g).reverse();
-
-    // inject import
-    // const lastImportIndex = lines.findIndex(line => line.match(/^<style/));
     const lastScriptIndex = lines.findIndex(line => line.match(/^<\/script>/));
-    lines[lastScriptIndex] += rxLines;
+    lines[lastScriptIndex] += importLines;
 
-    // modify app
+    // modify Component Class name
     contentMain = lines.reverse().join('\n');
-    contentMain = contentMain.replace("TestComponent", `${moduleName}Component`);
+    contentMain = contentMain.replace("TestComponent", `${moduleName.charAt(0).toUpperCase()+ moduleName.slice(1)}Component`);
 
-
+    // Write files 
     fs.writeFileSync(mainPath, contentMain, { encoding: 'utf-8' });
   })
 

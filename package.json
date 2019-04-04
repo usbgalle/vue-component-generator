@@ -1,8 +1,15 @@
 {
   "name": "vue-cli-plugin-vue-component-generator",
   "description": "Vue componet generate for new components",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usbgalle/vue-component-generator"
+  },
+  "bugs": {
+    "url": "https://github.com/usbgalle/vue-component-generator/issues"
+  },
   "author": "Udara bandara <udara201@gmail.com>",
   "license": "MIT",
   "publishConfig": {
