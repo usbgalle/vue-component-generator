@@ -5,9 +5,9 @@
     <img alt="" src="https://img.shields.io/npm/dm/vue-cli-plugin-vue-component-generator.svg?style=flat-square">
 </a>
 
-# Vue Component Generator
+# Vue Component Generator (Typescript)
 
-[vue-cli 3](https://github.com/vuejs/vue-cli) plugin to generate vue comonents 
+[vue-cli 3](https://github.com/vuejs/vue-cli) plugin to generate vue components 
 
 ## Usage
 
