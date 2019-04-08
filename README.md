@@ -18,13 +18,13 @@ This package will works with typescript and create vue components easily using v
 ```sh
     $ npm i vue-cli-plugin-vue-component-generator
 ```
-    or
+
 - Install via yarn
 
 ```sh
     $ yarn add vue-cli-plugin-vue-component-generator
 ```
-    or  
+
 - Install via vue-cli
 
 ```sh
@@ -37,7 +37,7 @@ $ vue add vue-cli-plugin-vue-component-generator
 ```sh
 $ vue invoke vue-cli-plugin-vue-component-generator
 ```
-    This will prompt to following questions.
+This will prompt to following questions.
     
 ```sh
 ? Where's your components's root directory? 
@@ -55,4 +55,3 @@ Now it will generate 3 files in the defined directory inside a folder with file 
     file-name.templete.html
     file-name.vue
     file-name.scss
-    
