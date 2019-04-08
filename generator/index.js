@@ -50,7 +50,14 @@ module.exports = (api, options, rootOptions) => {
 
     // modify Component Class name
     contentMain = lines.reverse().join('\n');
-    contentMain = contentMain.replace("TestComponent", `${moduleName.charAt(0).toUpperCase()+ moduleName.slice(1)}Component`);
+    contentMain = contentMain.replace("TestComponent", `${prettify(moduleName)}Component`);
+
+    // convert module name to camel case 
+    function prettify(str) {
+      return str.split('-').map(function capitalize(part) {
+          return part.charAt(0).toUpperCase() + part.slice(1);
+      }).join('');
+  }
 
     // Write files 
     fs.writeFileSync(mainPath, contentMain, { encoding: 'utf-8' });
